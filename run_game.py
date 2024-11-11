@@ -1,5 +1,5 @@
-import movements as mv
-import game_management as gm
+import helpers.movements as mv
+import helpers.game_management as gm
 
 variable_list = gm.set_game()
 

@@ -2,8 +2,8 @@
 # Movements
 ########################################
 import random
-import printing_functions as pf
-import game_management as gm
+import helpers.printing_functions as pf
+import helpers.game_management as gm
 import pyinputplus as pyip
 
 
