@@ -27,6 +27,8 @@ UNO-Command-Line is a command-line-based implementation of the classic card game
    ```
    pip install -r requirements.txt
    ```
+4. For the Initial Run, Clear up the folder `data/reports/`.
+5. Copy the report template from `data/report_template/uno_winners.csv` to `data/reports/uno_winners.csv`
 
 ## Usage
 Run the game with:
