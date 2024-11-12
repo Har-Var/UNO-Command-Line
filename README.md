@@ -35,17 +35,18 @@ python run_game.py
 ```
 
 ## Game Rules
-1. Player can decide on the number of opponents and the number of cards in initial hand.
+1. Rules are same as the original UNO game (with 108 cards). See here - [UNO Rules](https://www.unorules.com/)
 2. Players take turns playing a card that matches the top card on the discard pile by color, number, or symbol.
 3. Special action cards (Reverse, Skip, Draw Two, Wild, and Wild Draw Four) can change the flow of the game.
 4. The first player to discard all their cards wins the game.
 
 ## Features
+- Player can decide on the number of opponents and the number of cards in initial hand.
 - Complete implementation of UNO rules, including action and wild cards.
 - Interactive prompts to guide players through each turn.
 - Basic AI opponents for a challenging solo play experience.
 - Game history and statistics are recorded in a CSV file.
-- Shows a list of available moves from player's hand based on the live card (i.e. card on the top of the table deck)
+- Shows a list of available moves from player's hand based on the Live Card (i.e. card on the top of the table deck)
 
 ## Project Structure
 - `run_game.py`: Main script that initializes and runs the game.
