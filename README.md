@@ -44,7 +44,8 @@ python run_game.py
 - Complete implementation of UNO rules, including action and wild cards.
 - Interactive prompts to guide players through each turn.
 - Basic AI opponents for a challenging solo play experience.
-- **Winners Log**: Each game’s winner, their final winning card, and the total cards played in the game are recorded in `data/reports/uno_winners.csv`.
+- Game history and statistics are recorded in a CSV file.
+- Shows a list of available moves from player's hand based on the live card (i.e. card on the top of the table deck)
 
 ## Project Structure
 - `run_game.py`: Main script that initializes and runs the game.
