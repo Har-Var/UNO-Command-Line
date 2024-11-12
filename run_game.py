@@ -1,7 +1,6 @@
-import helpers.movements as mv
-import helpers.game_management as gm
+from engine import set_game, main_move_manager
 
-variable_list = gm.set_game()
+variable_list = set_game()
 
 while True:
-    variable_list = mv.main_move_manager(variable_list)
+    variable_list = main_move_manager(variable_list)

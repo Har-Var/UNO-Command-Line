@@ -9,8 +9,7 @@ def intro_message():
     """
     Prints a welcome message to the user with the game's logo and tagline ("Let's play!").
     """
-    
-    
+
     welcome_message = """
             Let's play!
 
@@ -39,7 +38,7 @@ def print_rules():
     Prints the rules of the game UNO.
     The rules are printed out in a formatted string.
     """
-    
+
     print(
         """
           RULES:
@@ -72,8 +71,9 @@ def begin_print():
     """
     Prints a message to indicate the start of the game
     """
-    
-    print('''
+
+    print(
+        """
           #######################################################
           #######################################################
 
@@ -83,7 +83,8 @@ def begin_print():
           #######################################################
 
           
-          ''')
+          """
+    )
 
 
 ########################################
@@ -135,13 +136,13 @@ def prBlack(skk):
 def print_card(card):
     """
     Prints a card in a given color
-    
+
     Parameters
     ----------
     card : dict
         Dictionary containing the card's face and color
     """
-    
+
     card_color = card.get("color")
     card_face = card.get("face")
     card_print_rows = ["", "", "", "", ""]
@@ -280,7 +281,7 @@ def print_all_cards_easyread(variable_list):
     ------
     The live card, each player's hand (numbered for identification), the folded deck, and the table deck, all in an easy-to-read format.
     """
-    
+
     folded_deck = variable_list.get("folded_deck")
     table_deck = variable_list.get("table_deck")
     livecard = variable_list.get("livecard")

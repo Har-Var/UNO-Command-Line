@@ -1,7 +1,7 @@
 import random
 import csv
-import helpers.printing_functions as pf
 import pyinputplus as pyip
+from .printing_functions import print_rules, intro_message, begin_print
 
 
 ########################################
@@ -15,30 +15,34 @@ file_path = "data/report/uno_winners.csv"
 # Initializing Inputs
 ########################################
 
+
 def rules_input():
     """
     Function to ask user if they want to read the rules or not
-    If yes, prints the rules using pf.print_rules()
+    If yes, prints the rules using print_rules()
     If no, does nothing
     """
-    
+
     read_input = pyip.inputYesNo("Would you like to read the rules? y/n\n")
     if read_input == "yes":
-        pf.print_rules()
+        print_rules()
     else:
         pass
+
 
 def initializing_inputs():
     """
     Function to initialize inputs for the game
     """
-    
+
     variable_list = {}
     move_counter = 1
     move_direction = +1
 
     players_no = pyip.inputInt("How many total players do you want?\n")
-    first_hand_count = pyip.inputInt("How many cards do you want to be distributed in the first hand?\n")
+    first_hand_count = pyip.inputInt(
+        "How many cards do you want to be distributed in the first hand?\n"
+    )
 
     players_names = []
     for player in range(players_no):
@@ -85,18 +89,18 @@ def full_uno_deck(variable_list):
     # Adding a space before to accomodate +2 and +4
     """
     Function to generate the full UNO deck of cards
-    
+
     Parameters
     ----------
     variable_list : dict
         Dictionary containing the game variables
-    
+
     Returns
     -------
     variable_list : dict
         Updated dictionary containing the game variables with the key 'card_deck'
     """
-    
+
     possible_faces = [
         " 0",
         " 1",
@@ -160,7 +164,6 @@ def distribute_deck(variable_list):
         dict: Updated dictionary containing the distributed decks and other game variables.
     """
 
-
     players_no = variable_list.get("players_no")
     first_hand_count = variable_list.get("first_hand_count")
     card_deck = variable_list.get("card_deck")
@@ -207,13 +210,13 @@ def set_game():
     """
     Function to set up the game of UNO
     """
-    
+
     variable_list = initializing_inputs()
     variable_list = full_uno_deck(variable_list)
     variable_list = distribute_deck(variable_list)
-    pf.intro_message()
+    intro_message()
     rules_input()
-    pf.begin_print()
+    begin_print()
     return variable_list
 
 

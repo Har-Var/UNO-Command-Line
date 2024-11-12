@@ -1,10 +1,17 @@
+import random
+import pyinputplus as pyip
+from .printing_functions import (
+    print_card,
+    print_livecard,
+    print_hand,
+    print_available_moves,
+)
+from .game_management import print_game_over, play_again
+
+
 ########################################
 # Movements
 ########################################
-import random
-import helpers.printing_functions as pf
-import helpers.game_management as gm
-import pyinputplus as pyip
 
 
 def turn_fixer(variable_list):
@@ -91,7 +98,7 @@ def draw_card(variable_list):
     # Only printing drawn card if player 1 i.e. real player's move
     if move_counter == 1:
         print("Drawn Card:-")
-        pf.print_card(drawn_card)
+        print_card(drawn_card)
     else:
         pass
 
@@ -186,7 +193,7 @@ def post_move_display(variable_list):
         # i.e. AI opponent Move
         print(f"AI Opponent ({player_name},Player-{player_id}) plays :- ")
 
-    pf.print_card(livecard)
+    print_card(livecard)
     print("----------------------------------------------------------")
 
 
@@ -276,7 +283,7 @@ def livecard_automove(variable_list):
             all_players_deck[player_index].append(addcard)
             if move_counter == 1:
                 # If real player
-                pf.print_card(addcard)
+                print_card(addcard)
             else:
                 # If AI opponent
                 pass
@@ -315,7 +322,7 @@ def livecard_automove(variable_list):
             all_players_deck[player_index].append(addcard)
             if move_counter == 1:
                 # If real player
-                pf.print_card(addcard)
+                print_card(addcard)
             else:
                 # If AI opponent
                 pass
@@ -360,18 +367,18 @@ def pre_move_management(variable_list):
         A tuple containing the updated game variables dictionary and the list of available legal moves.
     """
     player_id = variable_list.get("move_counter")
-    pf.print_livecard(variable_list)
+    print_livecard(variable_list)
     if player_id == 1:
         # i.e. Real Player Move
-        pf.print_hand(variable_list, player_nature="real")
+        print_hand(variable_list, player_nature="real")
         available_moves, variable_list = player_available_moves(variable_list)
-        pf.print_available_moves(available_moves, player_nature="real")
+        print_available_moves(available_moves, player_nature="real")
 
     else:
         # i.e. AI opponent Move
-        pf.print_hand(variable_list, player_nature="ai")
+        print_hand(variable_list, player_nature="ai")
         available_moves, variable_list = player_available_moves(variable_list)
-        pf.print_available_moves(available_moves, player_nature="ai")
+        print_available_moves(available_moves, player_nature="ai")
 
     print("----------------------------------------------------------")
     return variable_list, available_moves
@@ -398,8 +405,8 @@ def play_move_management(card_id, variable_list, available_moves):
     """
     variable_list, game_over_flag = play_card(card_id, variable_list, available_moves)
     if game_over_flag == 1:
-        gm.print_game_over(variable_list)
-        variable_list = gm.play_again()
+        print_game_over(variable_list)
+        variable_list = play_again()
     elif game_over_flag == 0:
         post_move_display(variable_list)
         variable_list = turn_switcher(variable_list)
@@ -431,7 +438,11 @@ def main_move_manager(variable_list):
     else:
         if player_id == 1:
             # i.e. Real Player
-            card_no = pyip.inputInt("Select card from available moves to play\n",min=1,max=len(available_moves))
+            card_no = pyip.inputInt(
+                "Select card from available moves to play\n",
+                min=1,
+                max=len(available_moves),
+            )
         else:
             # AI opponent
             card_no = random.randint(1, len(available_moves))
